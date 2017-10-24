@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import shallowCompare from 'react-addons-shallow-compare';
 import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
 
+import { View, Image } from 'react-native';
+
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
 import vkontakteSource from './sources/Vkontakte.js';
@@ -203,9 +205,8 @@ export default class Avatar extends React.Component {
             borderRadius: (round ? 500 : 0)
         };
         return (
-            <img width={this.props.size}
-                height={this.props.size}
-                style={imageStyle}
+            <Image
+                style={[{ height: this.props.size, width: this.props.size }, imageStyle]}
                 src={this.state.src}
                 alt={alt}
                 onError={this.fetch} />
@@ -228,9 +229,9 @@ export default class Avatar extends React.Component {
             borderRadius: (round ? '100%' : 0)
         };
         return (
-            <div style={initialsStyle}>
+            <View style={initialsStyle}>
                 {this.state.value}
-            </div>
+            </View>
         );
     }
 
@@ -244,10 +245,10 @@ export default class Avatar extends React.Component {
             ...this.props.style
         };
         return (
-            <div className={this.props.className}
+            <View className={this.props.className}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
-            </div>
+            </View>
         );
     }
 }
