@@ -220,13 +220,13 @@ export default class Avatar extends React.Component {
         const initialsStyle = this.props.unstyled ? null : {
             width: size,
             height: size,
-            font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
-            lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
+            fontSize: Math.floor(size / textSizeRatio),
+            lineHeight: size, // yes, px suffix is needed on lineHeight
             textAlign: 'center',
             textTransform: 'uppercase',
             color: this.props.fgColor,
-            background: this.state.color,
-            borderRadius: (round ? '100%' : 0)
+            backgroundColor: this.state.color,
+            borderRadius: (round ? size : 0)
         };
         return (
             <Text style={initialsStyle}>
@@ -238,7 +238,7 @@ export default class Avatar extends React.Component {
     render() {
         const size = this.props.size;
         const hostStyle = this.props.unstyled ? null : {
-            display: 'inline-block',
+            display: 'flex',
             width: size,
             height: size,
             borderRadius: (this.props.round ? 500 : 0),
