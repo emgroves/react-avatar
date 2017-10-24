@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import shallowCompare from 'react-addons-shallow-compare';
 import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
 
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -229,9 +229,9 @@ export default class Avatar extends React.Component {
             borderRadius: (round ? '100%' : 0)
         };
         return (
-            <View style={initialsStyle}>
+            <Text style={initialsStyle}>
                 {this.state.value}
-            </View>
+            </Text>
         );
     }
 
